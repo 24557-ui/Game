@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://x8qnyu53aeo4"]
-
-[ext_resource type="Script" uid="uid://ofa8f3h81eaq" path="res://script/mesh_instance_3d.gd" id="1_nlhig"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" unique_id=308923303]
-script = ExtResource("1_nlhig")
