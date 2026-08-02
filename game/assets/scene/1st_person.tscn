@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bhe7e2rt7ux0h"]
+
+[ext_resource type="Script" uid="uid://3v31nbjoktjf" path="res://assets/script/First_pv.gd" id="1_60i4k"]
+[ext_resource type="PackedScene" uid="uid://dvcoyaaiwv62q" path="res://assets/models/Sojouner.blend" id="2_8ilel"]
+
+[node name="Node3D" type="Node3D" unique_id=1384241664]
+
+[node name="Sojouner" parent="." unique_id=1172445056 instance=ExtResource("2_8ilel")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.005972296, 0, 1.0473204)
+
+[node name="Node3D" type="Node3D" parent="." unique_id=212339233]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0012260377, 0, 0)
+script = ExtResource("1_60i4k")
+
+[node name="Camera3D" type="Camera3D" parent="Node3D" unique_id=2142151076]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26449972, 0.19844347, 0.0013442636)

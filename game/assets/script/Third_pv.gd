@@ -9,32 +9,20 @@ extends SpringArm3D
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
 func _unhandled_input(event):
-	
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		rotation.y -= sensitivity * event.relative.x
-		rotation.y = wrapf(rotation.y, 0.0, TAU)
-		
+		rotation.y = wrapf(rotation.y, 0.0, TAU)	
 		rotation.x -= sensitivity * event.relative.y
 		rotation.x = clamp(rotation.x, min_vertical_angle, max_vertical_angle)
 	spring_length = clamp(spring_length, spring_length_min, spring_length_max)	
 	if event.is_action_pressed("wheel_up") and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-			spring_length+=1
-			
+			spring_length+=1		
 	if event.is_action_pressed("wheel_down") and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 			spring_length-=1
-	
 	if event.is_action_pressed("toggle_mouse_capture"):
-		
 		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)	
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			

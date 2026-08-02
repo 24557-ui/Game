@@ -1,8 +1,0 @@
-[gd_scene format=3 uid="uid://bhe7e2rt7ux0h"]
-
-[ext_resource type="Script" uid="uid://3v31nbjoktjf" path="res://assets/script/First_pv.gd" id="1_60i4k"]
-
-[node name="Node3D" type="Node3D" unique_id=1384241664]
-script = ExtResource("1_60i4k")
-
-[node name="Camera3D" type="Camera3D" parent="." unique_id=2142151076]

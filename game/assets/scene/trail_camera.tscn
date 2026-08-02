@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://omp1e4mj3s2f"]
 
-[ext_resource type="PackedScene" uid="uid://dvcoyaaiwv62q" path="res://assets/models/Sojouner.blend" id="1_f8q5e"]
-[ext_resource type="Script" uid="uid://b3nl5udtl4r0x" path="res://assets/script/Third_pv.gd" id="2_f8q5e"]
+[ext_resource type="PackedScene" uid="uid://bhe7e2rt7ux0h" path="res://assets/scene/1st_person.tscn" id="1_m4jhs"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_f8q5e"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -24,11 +23,4 @@ environment = SubResource("Environment_4xjp1")
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Sojouner" parent="." unique_id=1172445056 instance=ExtResource("1_f8q5e")]
-
-[node name="SpringArm3D" type="SpringArm3D" parent="Sojouner" unique_id=1505691500]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0040266514, 0.22147739, -0.09661138)
-spring_length = 6.0
-script = ExtResource("2_f8q5e")
-
-[node name="Camera3D" type="Camera3D" parent="Sojouner/SpringArm3D" unique_id=897282712]
+[node name="1st_person" parent="." unique_id=1384241664 instance=ExtResource("1_m4jhs")]
