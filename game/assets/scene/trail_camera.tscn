@@ -1,18 +1,8 @@
 [gd_scene format=3 uid="uid://omp1e4mj3s2f"]
 
+[ext_resource type="Texture2D" uid="uid://de1a5r4b50tgi" path="res://assets/terrain_3d/red_laterite_soil_stones_1k.blend/textures/red_laterite_soil_stones_diff_1k.jpg" id="1_4xjp1"]
 [ext_resource type="PackedScene" uid="uid://blb532vox2cm7" path="res://assets/scene/sojourner.tscn" id="1_m4jhs"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_f8q5e"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-
-[sub_resource type="Sky" id="Sky_nrkg7"]
-sky_material = SubResource("ProceduralSkyMaterial_f8q5e")
-
-[sub_resource type="Environment" id="Environment_4xjp1"]
-background_mode = 2
-sky = SubResource("Sky_nrkg7")
-glow_enabled = true
+[ext_resource type="Texture2D" uid="uid://bb8blmg6wkka5" path="res://assets/terrain_3d/red_laterite_soil_stones_1k.blend/textures/red_laterite_soil_stones_rough_1k.exr" id="2_bjr6x"]
 
 [sub_resource type="Gradient" id="Gradient_5hjkw"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -54,7 +44,6 @@ _shader_parameters = {
 &"noise_texture": SubResource("NoiseTexture2D_f8q5e"),
 &"projection_threshold": null
 }
-show_checkered = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4xjp1"]
 transparency = 4
@@ -74,24 +63,23 @@ last_lod = 0
 last_shadow_lod = 0
 lod0_range = 128.0
 
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_al7io"]
+name = "red_laterite_soil_stones_diff_1k"
+albedo_texture = ExtResource("1_4xjp1")
+normal_texture = ExtResource("2_bjr6x")
+
 [sub_resource type="Terrain3DAssets" id="Terrain3DAssets_qixmg"]
 mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_bjr6x")])
+texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_al7io")])
 
 [node name="Node3D" type="Node3D" unique_id=1224814505]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1473865142]
-environment = SubResource("Environment_4xjp1")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=381796665]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
-shadow_enabled = true
-
 [node name="Terrain3D" type="Terrain3D" parent="." unique_id=1462092725]
-data_directory = "res://terain1"
+data_directory = "res://assets/terrain_3d"
 material = SubResource("Terrain3DMaterial_nrkg7")
 assets = SubResource("Terrain3DAssets_qixmg")
-show_checkered = true
 top_level = true
 metadata/_edit_lock_ = true
 
 [node name="Node3D" parent="." unique_id=2126805506 instance=ExtResource("1_m4jhs")]
+visible = false
