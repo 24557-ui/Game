@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dvcoyaaiwv62q"
-path="res://.godot/imported/Sojouner.blend-2b01d2364af229913c1764d99cb9de34.scn"
+path="res://.godot/imported/Sojourner.blend-c3d57efc0a8bc76bb262a1e6a2dd6dd6.scn"
 
 [deps]
 
-source_file="res://assets/models/Sojouner.blend"
-dest_files=["res://.godot/imported/Sojouner.blend-2b01d2364af229913c1764d99cb9de34.scn"]
+source_file="res://assets/models/Sojourner.blend"
+dest_files=["res://.godot/imported/Sojourner.blend-c3d57efc0a8bc76bb262a1e6a2dd6dd6.scn"]
 
 [params]
 

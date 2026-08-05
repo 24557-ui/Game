@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://omp1e4mj3s2f"]
 
+[ext_resource type="PackedScene" uid="uid://blb532vox2cm7" path="res://assets/scene/sojourner.tscn" id="1_m4jhs"]
+
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_f8q5e"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -90,3 +92,6 @@ material = SubResource("Terrain3DMaterial_nrkg7")
 assets = SubResource("Terrain3DAssets_qixmg")
 show_checkered = true
 top_level = true
+metadata/_edit_lock_ = true
+
+[node name="Node3D" parent="." unique_id=2126805506 instance=ExtResource("1_m4jhs")]

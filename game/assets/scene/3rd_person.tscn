@@ -1,28 +1,9 @@
 [gd_scene format=3 uid="uid://dyad2jc7kd1ux"]
 
-[ext_resource type="PackedScene" uid="uid://dvcoyaaiwv62q" path="res://assets/models/Sojouner.blend" id="1_uo4j3"]
+[ext_resource type="PackedScene" uid="uid://dvcoyaaiwv62q" path="res://assets/models/Sojourner.blend" id="1_uo4j3"]
 [ext_resource type="Script" uid="uid://b3nl5udtl4r0x" path="res://assets/script/Third_pv.gd" id="2_bacoy"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_uo4j3"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-
-[sub_resource type="Sky" id="Sky_bacoy"]
-sky_material = SubResource("ProceduralSkyMaterial_uo4j3")
-
-[sub_resource type="Environment" id="Environment_qa2po"]
-background_mode = 2
-sky = SubResource("Sky_bacoy")
-glow_enabled = true
-
 [node name="Node3D" type="Node3D" unique_id=1304738709]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=943827908]
-environment = SubResource("Environment_qa2po")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=710578478]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
-shadow_enabled = true
 
 [node name="Sojouner" parent="." unique_id=1172445056 instance=ExtResource("1_uo4j3")]
 

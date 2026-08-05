@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bhe7e2rt7ux0h"]
 
 [ext_resource type="Script" uid="uid://3v31nbjoktjf" path="res://assets/script/First_pv.gd" id="1_60i4k"]
-[ext_resource type="PackedScene" uid="uid://dvcoyaaiwv62q" path="res://assets/models/Sojouner.blend" id="2_8ilel"]
+[ext_resource type="PackedScene" uid="uid://dvcoyaaiwv62q" path="res://assets/models/Sojourner.blend" id="2_8ilel"]
 
 [node name="Node3D" type="Node3D" unique_id=1384241664]
 

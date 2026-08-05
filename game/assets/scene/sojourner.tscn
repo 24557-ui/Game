@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://blb532vox2cm7"]
+
+[ext_resource type="PackedScene" uid="uid://dvcoyaaiwv62q" path="res://assets/models/Sojourner.blend" id="1_jkacj"]
+[ext_resource type="Script" uid="uid://d4gw4e4vmfiax" path="res://assets/script/camera_switch.gd" id="2_2eetg"]
+[ext_resource type="Script" uid="uid://b3nl5udtl4r0x" path="res://assets/script/Third_pv.gd" id="2_bc0ku"]
+[ext_resource type="Script" uid="uid://3v31nbjoktjf" path="res://assets/script/First_pv.gd" id="3_2eetg"]
+
+[node name="Node3D" type="Node3D" unique_id=2126805506]
+script = ExtResource("2_2eetg")
+
+[node name="Sojourner" parent="." unique_id=867851438 instance=ExtResource("1_jkacj")]
+
+[node name="SpringArm3D" type="SpringArm3D" parent="Sojourner" unique_id=696015067]
+script = ExtResource("2_bc0ku")
+
+[node name="Camera3D_3" type="Camera3D" parent="Sojourner/SpringArm3D" unique_id=593749480]
+
+[node name="first_pv_camera" type="Node3D" parent="." unique_id=457055205]
+script = ExtResource("3_2eetg")
+
+[node name="Camera3D_1" type="Camera3D" parent="first_pv_camera" unique_id=363388281]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19846725, 0.2052818, -0.97475594)
