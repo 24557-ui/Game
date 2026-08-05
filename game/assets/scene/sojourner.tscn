@@ -19,4 +19,4 @@ script = ExtResource("2_bc0ku")
 script = ExtResource("3_2eetg")
 
 [node name="Camera3D_1" type="Camera3D" parent="first_pv_camera" unique_id=363388281]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19846725, 0.2052818, -0.97475594)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.27820313, 0.17820996, -0.97475594)
