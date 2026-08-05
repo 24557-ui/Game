@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2xg0gl0r015o"
-valid=false
+uid="uid://ey0ocg04cb44"
+path="res://.godot/imported/rock_face_diff_1k.png-46ba56530319da25081b4d133d5a8672.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://assets/terrain_3d/rock_face_1k.blend/textures/rock_face_nor_gl_1k.exr"
+source_file="res://assets/textures/rock_face_diff_1k.png"
+dest_files=["res://.godot/imported/rock_face_diff_1k.png-46ba56530319da25081b4d133d5a8672.ctex"]
 
 [params]
 

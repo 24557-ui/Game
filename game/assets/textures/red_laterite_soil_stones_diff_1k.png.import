@@ -2,21 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bb8blmg6wkka5"
-path.bptc="res://.godot/imported/red_laterite_soil_stones_rough_1k.exr-025a4a6983367a1b2c5b0e4a3761eb55.bptc.ctex"
+uid="uid://cl05c12y7rafi"
+path="res://.godot/imported/red_laterite_soil_stones_diff_1k.png-1b51271720bd59bbf5b34281c92be0f3.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/terrain_3d/red_laterite_soil_stones_1k.blend/textures/red_laterite_soil_stones_rough_1k.exr"
-dest_files=["res://.godot/imported/red_laterite_soil_stones_rough_1k.exr-025a4a6983367a1b2c5b0e4a3761eb55.bptc.ctex"]
+source_file="res://assets/textures/red_laterite_soil_stones_diff_1k.png"
+dest_files=["res://.godot/imported/red_laterite_soil_stones_diff_1k.png-1b51271720bd59bbf5b34281c92be0f3.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -24,7 +23,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -38,4 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1
