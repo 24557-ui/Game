@@ -4,6 +4,10 @@
 [ext_resource type="Script" uid="uid://d4gw4e4vmfiax" path="res://assets/script/camera_switch.gd" id="2_2eetg"]
 [ext_resource type="Script" uid="uid://b3nl5udtl4r0x" path="res://assets/script/Third_pv.gd" id="2_bc0ku"]
 [ext_resource type="Script" uid="uid://3v31nbjoktjf" path="res://assets/script/First_pv.gd" id="3_2eetg"]
+[ext_resource type="Script" uid="uid://6vmy020ve5du" path="res://assets/script/character_body_3d.gd" id="5_grv4m"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r5eyr"]
+size = Vector3(2.0023804, 1.2109375, 2.4077148)
 
 [node name="Node3D" type="Node3D" unique_id=2126805506]
 script = ExtResource("2_2eetg")
@@ -20,3 +24,10 @@ script = ExtResource("3_2eetg")
 
 [node name="Camera3D_1" type="Camera3D" parent="first_pv_camera" unique_id=363388281]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.27820313, 0.17820996, -0.97475594)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1095092860]
+script = ExtResource("5_grv4m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1261117946]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.059906006, -0.108261764, -0.08819944)
+shape = SubResource("BoxShape3D_r5eyr")
