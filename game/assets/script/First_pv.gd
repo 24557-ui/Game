@@ -23,8 +23,8 @@ func _unhandled_input(event):
 		#print(event.relative.x) debug		
 	if event.is_action_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE	
-	if event.is_action_pressed("toggle_mouse_capture"):
+	'''if event.is_action_pressed("toggle_mouse_capture"):
 		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)	
 		else:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)'''

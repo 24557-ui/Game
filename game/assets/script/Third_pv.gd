@@ -10,7 +10,7 @@ extends SpringArm3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	pass
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
@@ -23,9 +23,9 @@ func _unhandled_input(event):
 			spring_length+=1		
 	if event.is_action_pressed("wheel_down") and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 			spring_length-=1
-	if event.is_action_pressed("toggle_mouse_capture"):
+	'''if event.is_action_pressed("toggle_mouse_capture"):
 		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)	
 		else:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)'''
 			
