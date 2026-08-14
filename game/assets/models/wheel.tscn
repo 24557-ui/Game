@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://djuq3ssdyjxmg"]
+
+[ext_resource type="PackedScene" uid="uid://cavcp25de5uyc" path="res://assets/models/wheel.blend" id="1_n1mu2"]
+
+[node name="wheel" unique_id=93752536 instance=ExtResource("1_n1mu2")]
