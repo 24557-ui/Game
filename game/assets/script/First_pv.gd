@@ -1,15 +1,13 @@
 extends Node3D
 
 @export var sensitivity := 0.005
-@export_range(-90, 0, 0.1, "radians_as_degrees") var L_rotation: float = deg_to_rad(-90)
-@export_range(0, 90, 0.1, "radians_as_degrees") var R_rotation: float = deg_to_rad(90)
-@export var pitch_limit: float = deg_to_rad(89)
+@export_range(-90, 0, 0.1, "radians_as_degrees") var L_rotation: float = deg_to_rad(-45)
+@export_range(0, 90, 0.1, "radians_as_degrees") var R_rotation: float = deg_to_rad(45)
+@export var pitch_limit: float = deg_to_rad(40)
 @onready var cam: Camera3D =$Camera3D_1 #$Camera3D for trail
 
 var pitch := 0.0
 var angle := 0.0
-
-
 func _ready() -> void:
 	#print("Camera script loaded!") debug
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED

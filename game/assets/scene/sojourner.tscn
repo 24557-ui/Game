@@ -21,6 +21,9 @@ current = true
 
 [node name="first_pv_camera" type="Node3D" parent="." unique_id=457055205]
 script = ExtResource("3_2eetg")
+L_rotation = -0.6981317007977318
+R_rotation = 0.6981317007977318
+pitch_limit = 0.65
 
 [node name="Camera3D_1" type="Camera3D" parent="first_pv_camera" unique_id=363388281]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.27820313, 0.17820996, -0.97475594)
