@@ -1,4 +1,4 @@
-extends CharacterBody3D
+extends VehicleBody3D
 
 @onready var third_pv = $Sojourner/SpringArm3D/Camera3D_3
 @onready var first_pv = $first_pv_camera/Camera3D_1
@@ -28,7 +28,7 @@ const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
 
-func _physics_process(delta: float) -> void:
+'''func _physics_process(delta: float) -> void:
 	#print($".".is_on_floor())
 	#print(self.position.y)
 	# Add the gravity.
@@ -50,4 +50,4 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
-	$".".move_and_slide()
+	$".".move_and_slide()'''

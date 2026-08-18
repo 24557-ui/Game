@@ -6,9 +6,9 @@
 [ext_resource type="Script" uid="uid://3v31nbjoktjf" path="res://assets/script/First_pv.gd" id="3_2eetg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r5eyr"]
-size = Vector3(2.0023804, 1.2109375, 2.4077148)
+size = Vector3(2.0023804, 1.1831055, 2.4077148)
 
-[node name="Node3D" type="CharacterBody3D" unique_id=1766348732]
+[node name="Node3D" type="VehicleBody3D" unique_id=1152008255]
 script = ExtResource("2_2eetg")
 
 [node name="Sojourner" parent="." unique_id=867851438 instance=ExtResource("1_jkacj")]
@@ -29,5 +29,5 @@ pitch_limit = 0.65
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.27820313, 0.17820996, -0.97475594)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1261117946]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.059906006, -0.108261764, -0.08819944)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.059906006, -0.09434575, -0.08819944)
 shape = SubResource("BoxShape3D_r5eyr")
