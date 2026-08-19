@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://ovssktrl6n0"]
+
+[ext_resource type="PackedScene" uid="uid://cavcp25de5uyc" path="res://assets/models/wheel.blend" id="1_cs0lm"]
+
+[node name="VehicleWheel3D" type="VehicleWheel3D" unique_id=100070975]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0063213706)
+
+[node name="wheel" parent="." unique_id=707942519 instance=ExtResource("1_cs0lm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.003823936, 0, -0.0001680851)
