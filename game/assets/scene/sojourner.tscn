@@ -51,7 +51,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.7
 use_as_steering = true
 
 [node name="VehicleWheel3D3" parent="." unique_id=317854571 instance=ExtResource("5_grv4m")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.7938682, -0.49219972, -1.1004217)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.7936418, -0.49219972, -1.1021953)
 use_as_steering = true
 
 [node name="VehicleWheel3D6" parent="." unique_id=784108575 instance=ExtResource("6_iovaw")]
