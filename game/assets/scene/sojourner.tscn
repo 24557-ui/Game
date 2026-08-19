@@ -11,7 +11,10 @@
 size = Vector3(2.0023804, 1.1831055, 2.4077148)
 
 [node name="VehicleBody3D" type="VehicleBody3D" unique_id=1152008255]
+mass = 50.0
+gravity_scale = 0.8
 script = ExtResource("2_2eetg")
+engine_cons = 150.0
 
 [node name="Sojourner" parent="." unique_id=867851438 instance=ExtResource("1_jkacj")]
 
@@ -31,29 +34,33 @@ pitch_limit = 0.65
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.27820313, 0.17820996, -0.97475594)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1261117946]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04883401, -0.09434575, -0.08819944)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04883401, -0.073019445, -0.08819944)
 shape = SubResource("BoxShape3D_r5eyr")
 
 [node name="VehicleWheel3D" parent="." unique_id=100070975 instance=ExtResource("5_grv4m")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.78347355, -0.48990548, 0.69064236)
 use_as_traction = true
+suspension_stiffness = 4.0
 
 [node name="VehicleWheel3D2" parent="." unique_id=2135762434 instance=ExtResource("5_grv4m")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.91550356, -0.48990548, -0.1541726)
-use_as_steering = true
+suspension_stiffness = 4.0
 
 [node name="VehicleWheel3D4" parent="." unique_id=889758426 instance=ExtResource("6_iovaw")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.778019, -0.4923551, 0.6791632)
 use_as_traction = true
+suspension_stiffness = 4.0
 
 [node name="VehicleWheel3D5" parent="." unique_id=1188482836 instance=ExtResource("6_iovaw")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.7850753, -0.4925105, -1.1067433)
 use_as_steering = true
+suspension_stiffness = 4.0
 
 [node name="VehicleWheel3D3" parent="." unique_id=317854571 instance=ExtResource("5_grv4m")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.7936418, -0.49219972, -1.1021953)
 use_as_steering = true
+suspension_stiffness = 4.0
 
 [node name="VehicleWheel3D6" parent="." unique_id=784108575 instance=ExtResource("6_iovaw")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.88976026, -0.49821424, -0.15472096)
-use_as_steering = true
+suspension_stiffness = 4.0
