@@ -10,6 +10,11 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_r5eyr"]
 size = Vector3(2.0023804, 1.1831055, 2.4077148)
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_17k7s"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_iovaw"]
+size = Vector2(0, 1)
+
 [node name="VehicleBody3D" type="VehicleBody3D" unique_id=1152008255]
 mass = 50.0
 gravity_scale = 0.8
@@ -64,3 +69,10 @@ suspension_stiffness = 4.0
 [node name="VehicleWheel3D6" parent="." unique_id=784108575 instance=ExtResource("6_iovaw")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.88976026, -0.49821424, -0.15472096)
 suspension_stiffness = 4.0
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=34436400]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8709916, -0.54872286, -0.11575174)
+amount = 30
+amount_ratio = 0.5
+process_material = SubResource("ParticleProcessMaterial_17k7s")
+draw_pass_1 = SubResource("QuadMesh_iovaw")

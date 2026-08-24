@@ -3,18 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://blb532vox2cm7" path="res://assets/scene/sojourner.tscn" id="1_m4jhs"]
 [ext_resource type="Texture2D" uid="uid://cl05c12y7rafi" path="res://assets/textures/red_laterite_soil_stones_diff_1k.png" id="2_nrkg7"]
 [ext_resource type="Texture2D" uid="uid://ey0ocg04cb44" path="res://assets/textures/rock_face_diff_1k.png" id="3_4xjp1"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nrkg7"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-
-[sub_resource type="Sky" id="Sky_4xjp1"]
-sky_material = SubResource("ProceduralSkyMaterial_nrkg7")
-
-[sub_resource type="Environment" id="Environment_bjr6x"]
-background_mode = 2
-sky = SubResource("Sky_4xjp1")
-glow_enabled = true
+[ext_resource type="PackedScene" uid="uid://duolrwpeqlxr7" path="res://assets/scene/rock1.tscn" id="4_4xjp1"]
 
 [sub_resource type="Gradient" id="Gradient_m4jhs"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -115,17 +104,37 @@ normal_texture = SubResource("ImageTexture_uk87w")
 mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_4xjp1")])
 texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_al7io"), SubResource("Terrain3DTextureAsset_xkgoq")])
 
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_rra1o"]
+rayleigh_color = Color(0.58, 0.1392, 0.1392, 1)
+sun_disk_scale = 0.0
+
+[sub_resource type="Sky" id="Sky_r5eyr"]
+sky_material = SubResource("PhysicalSkyMaterial_rra1o")
+
+[sub_resource type="Environment" id="Environment_17k7s"]
+background_mode = 2
+sky = SubResource("Sky_r5eyr")
+fog_enabled = true
+fog_light_color = Color(0.60546875, 0.43872833, 0.43872833, 1)
+fog_light_energy = 0.35
+fog_sun_scatter = 0.2
+fog_density = 0.0
+fog_aerial_perspective = 0.322
+fog_sky_affect = 0.7
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0003
+volumetric_fog_albedo = Color(0.9902344, 0.638237, 0.638237, 1)
+volumetric_fog_emission = Color(1, 0.671875, 0.671875, 1)
+volumetric_fog_emission_energy = 8.42
+
 [node name="Node3D" type="Node3D" unique_id=1224814505]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1823153411]
-environment = SubResource("Environment_bjr6x")
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1775127751]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, -3408.4482)
 shadow_enabled = true
 
 [node name="Node3D" parent="." unique_id=2126805506 instance=ExtResource("1_m4jhs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9506507, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6893282, 0)
 
 [node name="Terrain3D" type="Terrain3D" parent="." unique_id=1920487564]
 data_directory = "res://assets/textures"
@@ -134,3 +143,43 @@ assets = SubResource("Terrain3DAssets_al7io")
 collision_mode = 2
 top_level = true
 metadata/_edit_lock_ = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=392640071]
+environment = SubResource("Environment_17k7s")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment" unique_id=803180297]
+transform = Transform3D(1, 0, 0, 0, 0.34202015, -0.9396926, 0, 0.9396926, 0.34202015, 0, 0, 0)
+light_color = Color(1, 0.83137256, 0.6392157, 1)
+shadow_enabled = true
+
+[node name="rocks" type="Node3D" parent="." unique_id=605298995]
+
+[node name="rock10" parent="rocks" unique_id=625359179 instance=ExtResource("4_4xjp1")]
+transform = Transform3D(3, 0, 0, 0, 1.445033, -2.6290452, 0, 2.6290452, 1.445033, 107.15822, 3.728314, 12.006186)
+
+[node name="rock1" parent="rocks" unique_id=1755631565 instance=ExtResource("4_4xjp1")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -12.033, -0.1, 3.886)
+
+[node name="rock2" parent="rocks" unique_id=655187089 instance=ExtResource("4_4xjp1")]
+transform = Transform3D(3, 0, 0, 0, 1.9283628, -2.2981334, 0, 2.2981334, 1.9283628, -39.934, -2.3, -12.363)
+
+[node name="rock3" parent="rocks" unique_id=92720469 instance=ExtResource("4_4xjp1")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -17.894, -2.3, -41.851)
+
+[node name="rock4" parent="rocks" unique_id=1278654734 instance=ExtResource("4_4xjp1")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 45.23646, -4.3550205, -108.231224)
+
+[node name="rock5" parent="rocks" unique_id=14965216 instance=ExtResource("4_4xjp1")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 175.03049, 2.1593797, -175.79553)
+
+[node name="rock6" parent="rocks" unique_id=1413605685 instance=ExtResource("4_4xjp1")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 208.13972, 0.92334795, -170.88219)
+
+[node name="rock7" parent="rocks" unique_id=123672905 instance=ExtResource("4_4xjp1")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -179.12302, -8.851732, -120.40459)
+
+[node name="rock8" parent="rocks" unique_id=1026853535 instance=ExtResource("4_4xjp1")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -103.594, -0.4, 132.206)
+
+[node name="rock9" parent="rocks" unique_id=375306527 instance=ExtResource("4_4xjp1")]
+transform = Transform3D(3, 0, 0, 0, -0.97840405, 2.83597, 0, -2.83597, -0.97840405, 84.77837, 2.9406137, 19.623959)

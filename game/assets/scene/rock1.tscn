@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://duolrwpeqlxr7"]
+
+[ext_resource type="PackedScene" uid="uid://b2kg2lsfgw002" path="res://assets/models/rock1.blend" id="1_oc5ny"]
+[ext_resource type="Script" uid="uid://bpt4rubcfsovq" path="res://assets/scene/rock1.gd" id="1_wpelu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bjr6x"]
+size = Vector3(0.38372803, 0.37158203, 0.657959)
+
+[node name="rock1" type="StaticBody3D" unique_id=462778573]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+script = ExtResource("1_wpelu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=270274821]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19140181, 0.0285093, 0.050914288)
+shape = SubResource("BoxShape3D_bjr6x")
+
+[node name="rock1" parent="." unique_id=750296269 instance=ExtResource("1_oc5ny")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1623490927]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.2, 0)
+light_color = Color(0.6425781, 0.6984253, 1, 1)
+light_energy = 16.0
