@@ -9,6 +9,7 @@ func _ready():
 	third_pv.current = true
 	first_pv.current = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
 
 func _input(event):
 	
@@ -24,6 +25,10 @@ func _input(event):
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)	
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	if event.is_action_pressed("d"):
+		#rotation_right
+		
+		pass
 
 
 func _physics_process(delta):
