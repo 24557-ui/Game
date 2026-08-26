@@ -15,6 +15,13 @@ size = Vector3(2.0023804, 1.1831055, 2.4077148)
 [sub_resource type="QuadMesh" id="QuadMesh_iovaw"]
 size = Vector2(0, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iovaw"]
+albedo_color = Color(0.7280369, 0.7012308, 0.960356, 1)
+metallic = 1.0
+
+[sub_resource type="PrismMesh" id="PrismMesh_iovaw"]
+material = SubResource("StandardMaterial3D_iovaw")
+
 [node name="VehicleBody3D" type="VehicleBody3D" unique_id=1152008255]
 mass = 50.0
 gravity_scale = 0.8
@@ -27,6 +34,7 @@ engine_cons = 150.0
 script = ExtResource("2_bc0ku")
 
 [node name="Camera3D_3" type="Camera3D" parent="Sojourner/SpringArm3D" unique_id=593749480]
+cull_mask = 1048571
 current = true
 
 [node name="first_pv_camera" type="Node3D" parent="." unique_id=457055205]
@@ -37,6 +45,7 @@ pitch_limit = 0.65
 
 [node name="Camera3D_1" type="Camera3D" parent="first_pv_camera" unique_id=363388281]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.27820313, 0.17820996, -0.97475594)
+cull_mask = 1048571
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1261117946]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04883401, -0.073019445, -0.08819944)
@@ -76,3 +85,8 @@ amount = 30
 amount_ratio = 0.5
 process_material = SubResource("ParticleProcessMaterial_17k7s")
 draw_pass_1 = SubResource("QuadMesh_iovaw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1191525092]
+transform = Transform3D(3.5, 0, 0, 0, -2.0400104e-07, 1.167, 0, -4.667, -5.101119e-08, 0, 0.8286774, -0.8402411)
+layers = 4
+mesh = SubResource("PrismMesh_iovaw")

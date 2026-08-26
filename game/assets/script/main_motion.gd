@@ -4,6 +4,8 @@ extends VehicleBody3D
 @onready var first_pv = $first_pv_camera/Camera3D_1
 @export var steering_cons:float = 0.5
 @export var engine_cons:float = 200
+var perspective = 0
+
 
 func _ready():
 	third_pv.current = true
@@ -26,9 +28,8 @@ func _input(event):
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	if event.is_action_pressed("d"):
-		#rotation_right
-		
 		pass
+		#self.rotation = 
 
 
 func _physics_process(delta):
