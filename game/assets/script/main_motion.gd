@@ -4,7 +4,8 @@ extends VehicleBody3D
 @onready var first_pv = $first_pv_camera/Camera3D_1
 @export var steering_cons:float = 0.5
 @export var engine_cons:float = 200
-var perspective = 0
+
+
 
 
 func _ready():
@@ -28,10 +29,15 @@ func _input(event):
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	if event.is_action_pressed("d"):
-		pass
-		#self.rotation = 
+		rotation.y += deg_to_rad(20)
+	if event.is_action_pressed("s"):
+		rotation.y += -deg_to_rad(20)
 
 
 func _physics_process(delta):
-	steering = Input.get_axis("d","a") * steering_cons
-	engine_force = Input.get_axis("s","w") * engine_cons
+	var turn_input = Input.get_axis("d","a")
+	steering = turn_input * steering_cons
+	var forward_input = Input.get_axis("s","w")
+	engine_force = forward_input * engine_cons
+	rotate_y(steering * delta)
+	
