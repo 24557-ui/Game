@@ -190,3 +190,6 @@ transform = Transform3D(3, 0, 0, 0, -0.97840405, 2.83597, 0, -2.83597, -0.978404
 scale = Vector2(0.8, 0.8)
 transform = Transform2D(0.8, 0, 0, 0.8, 0, 0)
 sojourner = NodePath("../Node3D")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1344812737]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 357.4591, 0)

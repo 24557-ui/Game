@@ -40,4 +40,3 @@ func _physics_process(delta):
 	var forward_input = Input.get_axis("s","w")
 	engine_force = forward_input * engine_cons
 	rotate_y(steering * delta)
-	
