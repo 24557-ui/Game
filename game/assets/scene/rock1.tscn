@@ -9,6 +9,9 @@ height = 0.7739258
 
 [sub_resource type="BoxMesh" id="BoxMesh_17k7s"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_r5eyr"]
+radius = 0.5731368
+
 [node name="rock1" type="Node3D" unique_id=2090587072]
 script = ExtResource("1_wpelu")
 
@@ -25,3 +28,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00073075294, 5.9604645e-08
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.001373291, 0.1971283, 0.00024414063)
 layers = 4
 mesh = SubResource("BoxMesh_17k7s")
+
+[node name="area3d" type="Area3D" parent="." unique_id=1780746321]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="area3d" unique_id=937176983]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19286327, 0, 0)
+shape = SubResource("SphereShape3D_r5eyr")
+
+[connection signal="body_entered" from="area3d" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="area3d" to="." method="_on_area_3d_body_exited"]

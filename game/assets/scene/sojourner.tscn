@@ -6,9 +6,7 @@
 [ext_resource type="Script" uid="uid://3v31nbjoktjf" path="res://assets/script/First_pv.gd" id="3_2eetg"]
 [ext_resource type="PackedScene" uid="uid://ovssktrl6n0" path="res://assets/scene/vehicle_wheel_3d.tscn" id="5_grv4m"]
 [ext_resource type="PackedScene" uid="uid://b83jpkw7dl1o5" path="res://assets/scene/vehicle_wheel_3d2.tscn" id="6_iovaw"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_r5eyr"]
-size = Vector3(2.0023804, 1.1442871, 2.4077148)
+[ext_resource type="PackedScene" uid="uid://okhawtansv3t" path="res://assets/scene/equipment.tscn" id="7_18xyf"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_17k7s"]
 
@@ -22,6 +20,21 @@ metallic = 1.0
 [sub_resource type="PrismMesh" id="PrismMesh_iovaw"]
 material = SubResource("StandardMaterial3D_iovaw")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_18xyf"]
+albedo_color = Color(0.921875, 1, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_17k7s"]
+material = SubResource("StandardMaterial3D_18xyf")
+top_radius = 7.755371
+bottom_radius = 7.755371
+height = 0.5839844
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_17k7s"]
+radius = 0.6205872
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_17k7s"]
+size = Vector3(1.996582, 1.1767578, 1.9992676)
+
 [node name="VehicleBody3D" type="VehicleBody3D" unique_id=1152008255]
 mass = 50.0
 gravity_scale = 0.8
@@ -34,7 +47,7 @@ engine_cons = 150.0
 script = ExtResource("2_bc0ku")
 
 [node name="Camera3D_3" type="Camera3D" parent="Sojourner/SpringArm3D" unique_id=593749480]
-cull_mask = 1048571
+cull_mask = 1048563
 current = true
 
 [node name="first_pv_camera" type="Node3D" parent="." unique_id=457055205]
@@ -45,11 +58,7 @@ pitch_limit = 0.65
 
 [node name="Camera3D_1" type="Camera3D" parent="first_pv_camera" unique_id=363388281]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.27820313, 0.17820996, -0.97475594)
-cull_mask = 1048571
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1261117946]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04883401, -0.053610265, -0.08819944)
-shape = SubResource("BoxShape3D_r5eyr")
+cull_mask = 1048563
 
 [node name="VehicleWheel3D" parent="." unique_id=100070975 instance=ExtResource("5_grv4m")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.78347355, -0.48990548, 0.69064236)
@@ -90,3 +99,27 @@ draw_pass_1 = SubResource("QuadMesh_iovaw")
 transform = Transform3D(3.5, 0, 0, 0, -2.0400104e-07, 1.167, 0, -4.667, -5.101119e-08, 0, 0.8286774, -0.8402411)
 layers = 4
 mesh = SubResource("PrismMesh_iovaw")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1575920148]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.897301, 0)
+layers = 8
+mesh = SubResource("CylinderMesh_17k7s")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=314194145]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=2049061979]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.022671461, 0, 0.82040036)
+shape = SubResource("SphereShape3D_17k7s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1571556530]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.014404297, -0.088378906, -0.22153252)
+shape = SubResource("BoxShape3D_17k7s")
+
+[node name="equipment" parent="." unique_id=1803297993 instance=ExtResource("7_18xyf")]
+transform = Transform3D(0.14999999, 0, 0, 0, 0.14999999, 0, 0, 0, 0.14999999, -0.08286238, 0.19072092, 0.7517834)
+
+[node name="ScanCutsceneCamera" type="Camera3D" parent="." unique_id=389472354]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 4.2, 0.75, 0.0)
+cull_mask = 1048435
+current = false
+fov = 65.0
