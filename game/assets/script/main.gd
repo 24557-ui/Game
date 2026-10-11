@@ -11,6 +11,7 @@ extends Node3D
 @onready var scan_cutscene_camera: Camera3D = $rover/ScanCutsceneCamera
 @onready var label_tech_point: Label = $CanvasLayer/Label_TP
 @onready var reset_button: Button = $CanvasLayer/ResetButton
+@onready var Opening: ColorRect = $CanvasLayer/Opening
 
 var tech_point: int = 0
 var current_rock: Node3D = null
@@ -108,7 +109,7 @@ func exit_research_scan_camera() -> void:
 		scan_cutscene_camera.current = false
 
 func exit_research_cutscene() -> void:
-	@warning_ignore("int_as_enum_without_cast")
+	#@warning_ignore("int_as_enum_without_cast")
 	rover.process_mode = rover_process_mode_before_cutscene
 
 func _on_research_cutscene_finished(_animation_name: StringName) -> void:
@@ -129,18 +130,27 @@ func button_exist_clicked():
 	research_ui.visible = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
+func _on_reset_button_pressed() -> void:
+	rover.linear_velocity = Vector3.ZERO
+	rover.angular_velocity = Vector3.ZERO
+	rover.global_position = Vector3.ZERO
+
+
+func _input(event):
+	if event.is_action_pressed("Reset"):
+		rover.linear_velocity = Vector3.ZERO
+		rover.angular_velocity = Vector3.ZERO
+		rover.global_position = Vector3(0,0,0)
+		rover.global_position.y = 10
+		print(rover.global_position)
 
 func _ready():
+	print("start")
 	research_cutscene.visible = false
 	research_ui.visible = false
+	Opening.visible = false
 	research_prompt = label_do.text
 	label_tech_point.text = "Tech point: "+str(tech_point)
-	initial_rover_transform = rover.global_transform
 	reset_button.pressed.connect(_on_reset_button_pressed)
 	research_button_do.pressed.connect(button_do_clicked)
 	research_button_notdo.pressed.connect(button_exist_clicked)
-
-func _on_reset_button_pressed() -> void:
-	rover.global_transform = initial_rover_transform
-	rover.linear_velocity = Vector3.ZERO
-	rover.angular_velocity = Vector3.ZERO

@@ -437,14 +437,22 @@ offset_top = 220.0
 offset_right = 142.0
 offset_bottom = 243.0
 
-[node name="ResetButton" type="Button" parent="CanvasLayer"]
-layout_mode = 0
+[node name="ResetButton" type="Button" parent="CanvasLayer" unique_id=514392368]
 offset_left = 1000.0
 offset_top = 14.0
 offset_right = 1140.0
 offset_bottom = 58.0
 tooltip_text = "先按 Esc 释放鼠标，然后点击按钮传送回起点"
 text = "重置 Reset"
+
+[node name="Opening" type="ColorRect" parent="CanvasLayer" unique_id=2057963376]
+offset_right = 1157.0
+offset_bottom = 648.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Opening" unique_id=1595048565]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
 
 [node name="ResearchCutsceneAnimationPlayer" type="AnimationPlayer" parent="." unique_id=488655828]
 libraries/ = SubResource("AnimationLibrary_research_cutscene")
