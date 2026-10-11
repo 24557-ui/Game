@@ -4,11 +4,13 @@ extends Node3D
 @onready var research_button_do = $CanvasLayer/research_ui/do
 @onready var label_do = $CanvasLayer/research_ui/Label
 @onready var research_button_notdo = $"CanvasLayer/research_ui/not do"
-@onready var rover: Node3D = $rover
+@onready var rover: VehicleBody3D = $rover
 @onready var equipment: Node3D = $rover/equipment
 @onready var equipment_detection_area: Area3D = $rover/equipment/EquipmentDetectionArea
 @onready var research_cutscene_player: AnimationPlayer = $ResearchCutsceneAnimationPlayer
 @onready var scan_cutscene_camera: Camera3D = $rover/ScanCutsceneCamera
+@onready var label_tech_point: Label = $CanvasLayer/Label_TP
+@onready var reset_button: Button = $CanvasLayer/ResetButton
 
 var tech_point: int = 0
 var current_rock: Node3D = null
@@ -16,6 +18,7 @@ var research_prompt: String
 var scanning_rock: Node3D = null
 var rover_process_mode_before_cutscene: int = Node.PROCESS_MODE_INHERIT
 var camera_before_research_cutscene: Camera3D = null
+var initial_rover_transform: Transform3D
 
 func _get_rock_from_detection_body(body: Node3D) -> Node3D:
 	var rock := body.get_parent() as Node3D
@@ -33,38 +36,28 @@ func _physics_process(_delta: float) -> void:
 	_refresh_research_detection()
 
 func _refresh_research_detection() -> void:
-	if scanning_rock != null:
-		return
 
 	var detected_rocks: Array[Node3D] = []
 	var distances: Dictionary = {}
 	for body in equipment_detection_area.get_overlapping_bodies():
 		var rock := _get_rock_from_detection_body(body)
-		if rock == null or not is_instance_valid(rock):
+		if rock == null:
 			continue
 		if not detected_rocks.has(rock):
 			detected_rocks.append(rock)
 			distances[rock] = equipment.global_position.distance_squared_to(rock.global_position)
 
 	var next_rock: Node3D = null
-	# Keep the active target while it is still researchable. If it has already
-	# been researched, prioritize another unresearched rock in the forward area.
-	if current_rock != null and is_instance_valid(current_rock) and detected_rocks.has(current_rock) and not bool(current_rock.get("researched")):
-		next_rock = current_rock
+	var closest_distance := INF
+	for rock in detected_rocks:
+		if bool(rock.get("researched")):
+			continue
+		var distance := distances[rock] as float
+		if distance < closest_distance:
+			closest_distance = distance
+			next_rock = rock
 
-	if next_rock == null:
-		var closest_distance := INF
-		for rock in detected_rocks:
-			if bool(rock.get("researched")):
-				continue
-			var distance := distances[rock] as float
-			if distance < closest_distance:
-				closest_distance = distance
-				next_rock = rock
-
-	# Only fall back to an already-researched rock when no new target is present.
-	if next_rock == null and current_rock != null and is_instance_valid(current_rock) and detected_rocks.has(current_rock):
-		next_rock = current_rock
+	# Fall back to the closest researched rock so the UI can still show a target.
 	if next_rock == null:
 		var closest_any_distance := INF
 		for rock in detected_rocks:
@@ -95,6 +88,7 @@ func button_do_clicked():
 	if current_rock == null or current_rock.researched or scanning_rock != null or not research_ui.visible:
 		return
 	scanning_rock = current_rock
+#	print("DEBUG 开始扫描, scanning_rock = ", scanning_rock)
 	research_ui.visible = false
 	enter_research_cutscene()
 	research_cutscene_player.play("research_cutscene")
@@ -118,12 +112,16 @@ func exit_research_cutscene() -> void:
 	rover.process_mode = rover_process_mode_before_cutscene
 
 func _on_research_cutscene_finished(_animation_name: StringName) -> void:
+#	print("DEBUG 动画结束, scanning_rock = ", scanning_rock)
 	var scanned_rock := scanning_rock
 	scanning_rock = null
 	exit_research_cutscene()
+#	if scanned_rock != null:
+#		print("DEBUG researched = ", scanned_rock.researched)
 	if scanned_rock != null and not scanned_rock.researched:
 		scanned_rock.researched = true
 		tech_point += 5
+		label_tech_point.text = "Tech point: "+str(tech_point)
 		print(tech_point)
 	_refresh_research_detection()
 
@@ -131,9 +129,18 @@ func button_exist_clicked():
 	research_ui.visible = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
+
 func _ready():
 	research_cutscene.visible = false
 	research_ui.visible = false
 	research_prompt = label_do.text
+	label_tech_point.text = "Tech point: "+str(tech_point)
+	initial_rover_transform = rover.global_transform
+	reset_button.pressed.connect(_on_reset_button_pressed)
 	research_button_do.pressed.connect(button_do_clicked)
 	research_button_notdo.pressed.connect(button_exist_clicked)
+
+func _on_reset_button_pressed() -> void:
+	rover.global_transform = initial_rover_transform
+	rover.linear_velocity = Vector3.ZERO
+	rover.angular_velocity = Vector3.ZERO
