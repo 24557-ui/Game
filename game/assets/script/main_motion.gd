@@ -11,7 +11,8 @@ enum CameraMode{THIRD, FIRST, MAP}
 var current_mode: int = CameraMode.THIRD
 
 func switch_camera_mode(mode: int):
-	mini_ca.current = false
+	if mini_ca != null:
+		mini_ca.current = false
 	third_pv.current = false
 	first_pv.current = false
 	match mode:
@@ -20,10 +21,15 @@ func switch_camera_mode(mode: int):
 		CameraMode.FIRST:
 			first_pv.current = true
 		CameraMode.MAP:
-			mini_ca.current = true
+			if mini_ca != null:
+				mini_ca.current = true
+			else:
+				push_error("mini_ca is not assigned and no ../mini_camera sibling was found.")
 
 
 func _ready():
+	if mini_ca == null:
+		mini_ca = get_node_or_null("../mini_camera") as Camera3D
 	switch_camera_mode(CameraMode.THIRD)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)		
 
@@ -38,8 +44,6 @@ func _input(event):
 		else:
 			current_mode = CameraMode.THIRD
 			switch_camera_mode(CameraMode.THIRD)
-
-
 	if event.is_action_pressed("toggle_mouse_capture"):
 		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)	
@@ -47,7 +51,7 @@ func _input(event):
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	if event.is_action_pressed("d"):
 		rotation.y += deg_to_rad(20)
-	if event.is_action_pressed("s"):
+	if event.is_action_pressed("a"):
 		rotation.y += -deg_to_rad(20)
 
 

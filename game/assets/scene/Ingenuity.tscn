@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://ddnpfdjrndre2"]
+
+[ext_resource type="PackedScene" uid="uid://b00luw780sw1k" path="res://assets/models/Ingenuity.blend" id="1_dts6k"]
+[ext_resource type="PackedScene" uid="uid://ckyojmycbhj02" path="res://assets/scene/rotor.tscn" id="2_ltr5s"]
+[ext_resource type="Script" uid="uid://db4c7k13i8qin" path="res://assets/script/helicopter.gd" id="3_helicopter"]
+[ext_resource type="Script" uid="uid://3v31nbjoktjf" path="res://assets/script/First_pv.gd" id="4_first"]
+[ext_resource type="Script" uid="uid://b3nl5udtl4r0x" path="res://assets/script/Third_pv.gd" id="5_third"]
+
+[node name="Node3D" type="Node3D" unique_id=1090544621]
+script = ExtResource("3_helicopter")
+
+[node name="Ingenuity" parent="." unique_id=291735110 instance=ExtResource("1_dts6k")]
+
+[node name="Node3D" parent="." unique_id=709824035 instance=ExtResource("2_ltr5s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7810175, 0)
+spin_direction = 1.0
+
+[node name="Node3D2" parent="." unique_id=1069637285 instance=ExtResource("2_ltr5s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8515238, 0)
+spin_direction = -1.0
+
+[node name="first_pv_camera" type="Node3D" parent="." unique_id=1544219283]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18, 0.15)
+script = ExtResource("4_first")
+
+[node name="Camera3D_1" type="Camera3D" parent="first_pv_camera" unique_id=79388981]
+cull_mask = 1048563
+
+[node name="third_pv_camera" type="SpringArm3D" parent="." unique_id=834741612]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+spring_length = 3.5
+margin = 0.2
+script = ExtResource("5_third")
+
+[node name="Camera3D" type="Camera3D" parent="third_pv_camera" unique_id=729455507]
+cull_mask = 1048563

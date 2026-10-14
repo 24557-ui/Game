@@ -1,0 +1,131 @@
+[gd_scene format=3 uid="uid://blb532vox2cm7"]
+
+[ext_resource type="PackedScene" uid="uid://dvcoyaaiwv62q" path="res://assets/models/Sojourner.blend" id="1_jkacj"]
+[ext_resource type="Script" uid="uid://d4gw4e4vmfiax" path="res://assets/script/main_motion.gd" id="2_2eetg"]
+[ext_resource type="Script" uid="uid://b3nl5udtl4r0x" path="res://assets/script/Third_pv.gd" id="2_bc0ku"]
+[ext_resource type="Script" uid="uid://3v31nbjoktjf" path="res://assets/script/First_pv.gd" id="3_2eetg"]
+[ext_resource type="PackedScene" uid="uid://ovssktrl6n0" path="res://assets/scene/vehicle_wheel_3d.tscn" id="5_grv4m"]
+[ext_resource type="PackedScene" uid="uid://b83jpkw7dl1o5" path="res://assets/scene/vehicle_wheel_3d2.tscn" id="6_iovaw"]
+[ext_resource type="PackedScene" uid="uid://okhawtansv3t" path="res://assets/scene/equipment.tscn" id="7_18xyf"]
+[ext_resource type="PackedScene" uid="uid://cayuvc4ccmdt4" path="res://assets/models/perseverance_parts/Perseverance.glb" id="8_xk6lq"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_17k7s"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_iovaw"]
+size = Vector2(0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iovaw"]
+albedo_color = Color(0.7280369, 0.7012308, 0.960356, 1)
+metallic = 1.0
+
+[sub_resource type="PrismMesh" id="PrismMesh_iovaw"]
+material = SubResource("StandardMaterial3D_iovaw")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_18xyf"]
+albedo_color = Color(0.921875, 1, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_17k7s"]
+material = SubResource("StandardMaterial3D_18xyf")
+top_radius = 7.755371
+bottom_radius = 7.755371
+height = 0.5839844
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_17k7s"]
+radius = 0.6205872
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_17k7s"]
+size = Vector3(1.996582, 1.1767578, 1.9992676)
+
+[node name="VehicleBody3D" type="VehicleBody3D" unique_id=1152008255]
+mass = 50.0
+gravity_scale = 0.8
+script = ExtResource("2_2eetg")
+engine_cons = 150.0
+
+[node name="Perseverance" parent="." unique_id=1855390177 instance=ExtResource("8_xk6lq")]
+transform = Transform3D(-0.8484569, 0, -7.417446e-08, 0, 0.8484569, 0, 7.417446e-08, 0, -0.8484569, 0, -0.6959535, -0.1263899)
+visible = false
+
+[node name="Sojourner" parent="." unique_id=867851438 instance=ExtResource("1_jkacj")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -0.40407425)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="Sojourner" unique_id=696015067]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+script = ExtResource("2_bc0ku")
+
+[node name="Camera3D_3" type="Camera3D" parent="Sojourner/SpringArm3D" unique_id=593749480]
+cull_mask = 1048563
+current = true
+
+[node name="first_pv_camera" type="Node3D" parent="." unique_id=457055205]
+script = ExtResource("3_2eetg")
+L_rotation = -0.6981317007977318
+R_rotation = 0.6981317007977318
+pitch_limit = 0.65
+
+[node name="Camera3D_1" type="Camera3D" parent="first_pv_camera" unique_id=363388281]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.31745717, 0.24169114, -1.1279453)
+cull_mask = 1048563
+
+[node name="VehicleWheel3D" parent="." unique_id=100070975 instance=ExtResource("5_grv4m")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.78347355, -0.48990548, 0.69064236)
+use_as_traction = true
+suspension_stiffness = 4.0
+
+[node name="VehicleWheel3D2" parent="." unique_id=2135762434 instance=ExtResource("5_grv4m")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.91550356, -0.48990548, -0.1541726)
+suspension_stiffness = 4.0
+
+[node name="VehicleWheel3D4" parent="." unique_id=889758426 instance=ExtResource("6_iovaw")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.778019, -0.4923551, 0.6791632)
+use_as_traction = true
+suspension_stiffness = 4.0
+
+[node name="VehicleWheel3D5" parent="." unique_id=1188482836 instance=ExtResource("6_iovaw")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.7850753, -0.4925105, -1.1067433)
+use_as_steering = true
+suspension_stiffness = 4.0
+
+[node name="VehicleWheel3D3" parent="." unique_id=317854571 instance=ExtResource("5_grv4m")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.7936418, -0.49219972, -1.1021953)
+use_as_steering = true
+suspension_stiffness = 4.0
+
+[node name="VehicleWheel3D6" parent="." unique_id=784108575 instance=ExtResource("6_iovaw")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.88976026, -0.49821424, -0.15472096)
+suspension_stiffness = 4.0
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=34436400]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8709916, -0.54872286, -0.11575174)
+amount = 30
+amount_ratio = 0.5
+process_material = SubResource("ParticleProcessMaterial_17k7s")
+draw_pass_1 = SubResource("QuadMesh_iovaw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1191525092]
+transform = Transform3D(3.5, 0, 0, 0, -2.0400104e-07, 1.167, 0, -4.667, -5.101119e-08, 0, 0.8286774, -0.8402411)
+layers = 4
+mesh = SubResource("PrismMesh_iovaw")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1575920148]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.897301, 0)
+layers = 8
+mesh = SubResource("CylinderMesh_17k7s")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=314194145]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=2049061979]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.022671461, 0, 0.82040036)
+shape = SubResource("SphereShape3D_17k7s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1571556530]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.014404297, -0.088378906, -0.22153252)
+shape = SubResource("BoxShape3D_17k7s")
+
+[node name="equipment" parent="." unique_id=1803297993 instance=ExtResource("7_18xyf")]
+transform = Transform3D(-0.14999999, 0, -1.3113416e-08, 0, 0.14999999, 0, 1.3113416e-08, 0, -0.14999999, 0.0828836, 0.19072092, -1.2259648)
+
+[node name="ScanCutsceneCamera" type="Camera3D" parent="." unique_id=389472354]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 4.2, 0.75, 0)
+cull_mask = 1048435
+fov = 65.0

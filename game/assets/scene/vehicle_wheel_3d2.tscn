@@ -1,9 +1,14 @@
 [gd_scene format=3 uid="uid://b83jpkw7dl1o5"]
 
 [ext_resource type="PackedScene" uid="uid://cavcp25de5uyc" path="res://assets/models/wheel.blend" id="1_nfgts"]
+[ext_resource type="PackedScene" uid="uid://bfkb2lnke6on4" path="res://assets/models/perseverance_parts/wheel.glb" id="2_n4f6p"]
 
 [node name="VehicleWheel3D" type="VehicleWheel3D" unique_id=100070975]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0063213706)
 
 [node name="wheel" parent="." unique_id=707942519 instance=ExtResource("1_nfgts")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.003823936, 0, -0.0001680851)
+
+[node name="wheel2" parent="." unique_id=1512487045 instance=ExtResource("2_n4f6p")]
+transform = Transform3D(0.7565872, 0, 0, 0, 0.8484569, 0, 0, 0, 0.848453, -0.8038637, -0.0112949, -0.002913164)
+visible = false
