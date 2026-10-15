@@ -311,6 +311,9 @@ transform = Transform3D(0.7565872, 0, 0, 0, 0.8484569, 0, 0, 0, 0.848453, -0.761
 [node name="wheel2" parent="rover/VehicleWheel3D6" parent_id_path=PackedInt32Array(2126805506, 784108575) index="1" unique_id=1512487045]
 transform = Transform3D(0.7565872, 0, 0, 0, 0.8484569, 0, 0, 0, 0.848453, -0.8389731, -0.0112926, -0.0030831)
 
+[node name="equipment" parent="rover" index="14" unique_id=1803297993]
+transform = Transform3D(-0.14999999, 0, -2.2649369e-08, 0, 0.14999999, 0, 2.2649369e-08, 0, -0.14999999, 0.0828836, 0.19072092, -1.2259648)
+
 [node name="Terrain3D" type="Terrain3D" parent="." unique_id=1920487564]
 data_directory = "res://assets/textures"
 material = SubResource("Terrain3DMaterial_4xjp1")
@@ -342,16 +345,16 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -39.934, -2.3, -12.363)
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -17.894, -2.3, -41.851)
 
 [node name="rock4" parent="rocks" unique_id=1278654734 instance=ExtResource("5_bhk2f")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 45.23646, -4.3550205, -108.231224)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 45.23646, -4.5609856, -108.231224)
 
 [node name="rock5" parent="rocks" unique_id=14965216 instance=ExtResource("5_bhk2f")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 175.03049, 2.1593797, -175.79553)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 175.03049, 1.929416, -175.79553)
 
 [node name="rock6" parent="rocks" unique_id=1413605685 instance=ExtResource("5_bhk2f")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 208.13972, 0.92334795, -170.88219)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 208.13972, 0.5930319, -170.88219)
 
 [node name="rock7" parent="rocks" unique_id=123672905 instance=ExtResource("5_bhk2f")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -179.12302, -8.851732, -120.40459)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -179.12302, -9.285839, -120.40459)
 
 [node name="rock8" parent="rocks" unique_id=1026853535 instance=ExtResource("5_bhk2f")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -103.594, -0.4, 132.206)

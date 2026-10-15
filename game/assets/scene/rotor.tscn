@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://ckyojmycbhj02"]
 
-[ext_resource type="PackedScene" uid="uid://de8gigghtaofl" path="res://assets/models/rotor.blend" id="1_l1xln"]
+[ext_resource type="PackedScene" path="res://assets/models/rotor_animated.scn" id="1_l1xln"]
 [ext_resource type="Script" uid="uid://b4n7cujimqyok" path="res://assets/script/rotor.gd" id="2_rotor"]
 
-[node name="Node3D" type="Node3D" unique_id=709824035]
+[node name="Node3D3" type="Node3D" unique_id=709824035]
 script = ExtResource("2_rotor")
 
 [node name="rotor" parent="." unique_id=1763695516 instance=ExtResource("1_l1xln")]

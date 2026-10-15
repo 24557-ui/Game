@@ -22,7 +22,7 @@ transform = Transform3D(0.9019784, -0.43178123, -1.8873758e-08, 0, -4.371138e-08
 shape = SubResource("CapsuleShape3D_wpelu")
 
 [node name="rock1" parent="." unique_id=750296269 instance=ExtResource("1_oc5ny")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00073075294, 5.9604645e-08, 0.0005019903)
+transform = Transform3D(0.94835377, -0.31721464, 0, 0.31721464, 0.94835377, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1369343646]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.001373291, 0.1971283, 0.00024414063)
@@ -34,6 +34,3 @@ mesh = SubResource("BoxMesh_17k7s")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="area3d" unique_id=937176983]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19286327, 0, 0)
 shape = SubResource("SphereShape3D_r5eyr")
-
-[connection signal="body_entered" from="area3d" to="." method="_on_area_3d_body_entered"]
-[connection signal="body_exited" from="area3d" to="." method="_on_area_3d_body_exited"]

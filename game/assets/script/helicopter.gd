@@ -8,37 +8,39 @@ enum CameraMode { THIRD, FIRST }
 
 @onready var first_camera: Camera3D = $first_pv_camera/Camera3D_1
 @onready var third_camera: Camera3D = $third_pv_camera/Camera3D
-@onready var rotor_controllers: Array[Node3D] = [$Node3D, $Node3D2]
+@onready var rotors: Array[Node3D] = [$Node3D, $Node3D2]
 
 var is_active := false
 var camera_mode: CameraMode = CameraMode.THIRD
 
 
 func _ready() -> void:
-	visibility_changed.connect(_on_visibility_changed)
 	visible = false
-	_set_rotor_speed(rotor_speed)
-	_set_rotors_spinning(false)
 	first_camera.current = false
 	third_camera.current = false
+
+	visibility_changed.connect(_on_visibility_changed)
+	_set_rotor_speed(rotor_speed)
+	_set_rotors_spinning(false)
 
 
 func _physics_process(delta: float) -> void:
 	if not is_active:
 		return
 
-	var horizontal_direction := Vector3.ZERO
-	if Input.is_action_pressed("w"):
-		horizontal_direction -= global_transform.basis.z
-	if Input.is_action_pressed("s"):
-		horizontal_direction += global_transform.basis.z
-	if Input.is_action_pressed("a"):
-		horizontal_direction -= global_transform.basis.x
-	if Input.is_action_pressed("d"):
-		horizontal_direction += global_transform.basis.x
+	var direction := Vector3.ZERO
 
-	if horizontal_direction != Vector3.ZERO:
-		global_position += horizontal_direction.normalized() * move_speed * delta
+	if Input.is_action_pressed("w"):
+		direction -= global_transform.basis.z
+	if Input.is_action_pressed("s"):
+		direction += global_transform.basis.z
+	if Input.is_action_pressed("a"):
+		direction -= global_transform.basis.x
+	if Input.is_action_pressed("d"):
+		direction += global_transform.basis.x
+
+	if direction != Vector3.ZERO:
+		global_position += direction.normalized() * move_speed * delta
 
 	if Input.is_physical_key_pressed(KEY_UP):
 		global_position += Vector3.UP * vertical_speed * delta
@@ -62,6 +64,8 @@ func _input(event: InputEvent) -> void:
 
 func set_helicopter_active(active: bool) -> void:
 	is_active = active
+	_set_rotors_spinning(active)
+
 	if active:
 		switch_camera_mode(CameraMode.THIRD)
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -81,12 +85,16 @@ func _on_visibility_changed() -> void:
 
 
 func _set_rotor_speed(speed: float) -> void:
-	for rotor_controller in rotor_controllers:
-		if rotor_controller.has_method("set_rotor_speed"):
-			rotor_controller.call("set_rotor_speed", speed)
+	for rotor in rotors:
+		if rotor.has_method("set_rotor_speed"):
+			rotor.call("set_rotor_speed", speed)
 
 
 func _set_rotors_spinning(spinning: bool) -> void:
-	for rotor_controller in rotor_controllers:
-		if rotor_controller.has_method("set_spinning"):
-			rotor_controller.call("set_spinning", spinning)
+	for rotor in rotors:
+		if spinning:
+			if rotor.has_method("start_spin"):
+				rotor.call("start_spin")
+		else:
+			if rotor.has_method("stop_spin"):
+				rotor.call("stop_spin")
