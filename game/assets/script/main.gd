@@ -26,6 +26,7 @@ extends Node3D
 @onready var equipment_arm: Node3D = $rover/equipment/arm2
 @onready var helicopter: Node3D = $Ingenuity
 @onready var helicopter_button: Button = $CanvasLayer/HelicopterButton
+@onready var helicopter_research_button = $CanvasLayer/HelicopterResearchLabel
 @onready var equipment_scan_particles: GPUParticles3D = $rover/equipment/GPUParticles3D
 @onready var upgraded_equipment_scan_particles: GPUParticles3D = $rover/equipment/GPUParticles3D_Upgraded
 
@@ -71,6 +72,7 @@ const GAME_END_TECH_POINT := 50
 var rover_upgrade_applied := false
 var game_end_popup_shown := false
 var helicopter_mode := false
+var helicopter_research_claimed = false
 var tech_point: int = 0
 var current_rock: Node3D = null
 var nearby_rocks: Array[Node3D] = []
@@ -266,12 +268,35 @@ func _apply_helicopter_mode() -> void:
 		rover.switch_camera_mode(0)
 		helicopter.set_helicopter_active(true)
 		helicopter_button.text = "Rover"
+
+		if helicopter_research_claimed == true:
+			helicopter_research_button.visible = false
+		else:
+			helicopter_research_button.visible = true
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	else:
 		helicopter.set_helicopter_active(false)
 		rover.switch_camera_mode(0)
 		rover.process_mode = Node.PROCESS_MODE_INHERIT
 		helicopter_button.text = "Helicopter"
+		helicopter_research_button.visible = false
+		if opening_screen.visible == false and game_end_popup.visible == false:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		_update_research_ui()
+
+
+func _on_helicopter_research_label_pressed():
+	if helicopter_mode == false:
+		return
+	if helicopter_research_claimed == true:
+		return
+
+	helicopter_research_claimed = true
+	helicopter_research_button.visible = false
+	_award_tech_points(5)
+
+	if game_end_popup.visible == false:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _on_research_cutscene_finished(_animation_name: StringName) -> void:
 	var scanned_rock := scanning_rock
@@ -279,12 +304,16 @@ func _on_research_cutscene_finished(_animation_name: StringName) -> void:
 	exit_research_cutscene()
 	if scanned_rock != null and not scanned_rock.researched:
 		scanned_rock.mark_as_researched()
-		tech_point += 5
-		label_tech_point.text = "Tech point: "+str(tech_point)
 		_refresh_research_progress_label()
-		_refresh_rover_visual_upgrade()
-		_show_game_end_popup_once()
+		_award_tech_points(5)
 	_update_research_ui()
+
+
+func _award_tech_points(points):
+	tech_point += points
+	label_tech_point.text = "Tech point: " + str(tech_point)
+	_refresh_rover_visual_upgrade()
+	_show_game_end_popup_once()
 
 func _refresh_research_progress_label() -> void:
 	var researched_count: int = 0
@@ -362,6 +391,7 @@ func _ready():
 	_setup_rock_detection()
 	research_cutscene.visible = false
 	research_ui.visible = false
+	helicopter_research_button.visible = false
 	research_prompt = label_do.text
 	label_tech_point.text = "Tech point: "+str(tech_point)
 	_refresh_research_progress_label()
@@ -379,5 +409,6 @@ func _ready():
 	help_close_button.pressed.connect(_on_help_close_button_pressed)
 	reset_button.pressed.connect(_on_reset_button_pressed)
 	helicopter_button.pressed.connect(_on_helicopter_button_pressed)
+	helicopter_research_button.pressed.connect(_on_helicopter_research_label_pressed)
 	research_button_do.pressed.connect(_on_research_button_pressed)
 	research_button_notdo.pressed.connect(_on_close_research_button_pressed)

@@ -22,6 +22,7 @@ func _ready() -> void:
 	visibility_changed.connect(_on_visibility_changed)
 	_set_rotor_speed(rotor_speed)
 	_set_rotors_spinning(false)
+	
 
 
 func _physics_process(delta: float) -> void:
