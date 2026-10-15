@@ -59,12 +59,12 @@ extends Node3D
 # Order matches wheel_holders / second_stage_wheels.
 var first_stage_wheel_positions: Array[Vector3] = []
 var second_stage_wheel_positions: Array[Vector3] = [
-	Vector3(0.9014739, -0.4891646, 0.8620539),
-	Vector3(0.9014739, -0.4618273, 0.3317768),
-	Vector3(-0.9014739, -0.4891646, 0.8620539),
-	Vector3(-0.9014739, -0.4891646, -1.0554416),
-	Vector3(0.9014739, -0.4891646, -1.0554416),
-	Vector3(-0.9014739, -0.4618273, 0.3317768),
+	Vector3(0.9, -0.489, 0.862),
+	Vector3(0.9, -0.461, 0.331),
+	Vector3(-0.9, -0.489, 0.862),
+	Vector3(-0.9, -0.489, -1.05),
+	Vector3(0.9, -0.489, -1.05),
+	Vector3(-0.9, -0.461, 0.33),
 ]
 
 const ROVER_UPGRADE_TECH_POINT := 25
@@ -251,7 +251,7 @@ func exit_research_scan_camera() -> void:
 		scan_cutscene_camera.current = false
 
 func exit_research_cutscene() -> void:
-	#@warning_ignore("int_as_enum_without_cast")
+	@warning_ignore("int_as_enum_without_cast")
 	rover.process_mode = rover_process_mode_before_cutscene
 
 func _on_helicopter_button_pressed() -> void:
