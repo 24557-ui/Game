@@ -134,9 +134,24 @@ volumetric_fog_emission_energy = 8.42
 [sub_resource type="LabelSettings" id="LabelSettings_qixmg"]
 font_size = 30
 
+[sub_resource type="Animation" id="Animation_xksna"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/research_cutscene/Dim:color:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1.0]
+}
+
 [sub_resource type="Animation" id="Animation_research_cutscene"]
 resource_name = "research_cutscene"
-length = 3.2
+length = 0.45
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -157,10 +172,10 @@ tracks/1/path = NodePath("CanvasLayer/research_cutscene/Dim:color:a")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.5, 2.7, 2.9, 3.1, 3.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.4, 0.5, 2.7, 2.9, 3.1, 3.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0]
+"values": [0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -268,6 +283,7 @@ tracks/9/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_research_cutscene"]
 _data = {
+&"RESET": SubResource("Animation_xksna"),
 &"research_cutscene": SubResource("Animation_research_cutscene")
 }
 
@@ -444,7 +460,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ScanProgress" type="ProgressBar" parent="CanvasLayer/research_cutscene" unique_id=721443754]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.3
@@ -468,6 +483,13 @@ offset_left = 102.0
 offset_top = 220.0
 offset_right = 142.0
 offset_bottom = 243.0
+
+[node name="ResearchProgressLabel" type="Label" parent="CanvasLayer"]
+offset_left = 2.0
+offset_top = 247.0
+offset_right = 340.0
+offset_bottom = 271.0
+text = "0/10 rocks have been researched"
 
 [node name="HelicopterButton" type="Button" parent="CanvasLayer" unique_id=41953830]
 visible = false

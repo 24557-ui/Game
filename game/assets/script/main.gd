@@ -9,6 +9,7 @@ extends Node3D
 @onready var research_cutscene_player: AnimationPlayer = $ResearchCutsceneAnimationPlayer
 @onready var scan_cutscene_camera: Camera3D = $rover/ScanCutsceneCamera
 @onready var label_tech_point: Label = $CanvasLayer/Label_TP
+@onready var research_progress_label: Label = $CanvasLayer/ResearchProgressLabel
 @onready var opening_screen: Control = $CanvasLayer/OpeningScreen
 @onready var start_button: Button = $CanvasLayer/OpeningScreen/StartButton
 @onready var introduction_button: Button = $CanvasLayer/OpeningScreen/IntroductionButton
@@ -126,7 +127,6 @@ func _setup_rock_detection() -> void:
 		area.body_entered.connect(_on_rock_area_body_entered.bind(rock))
 		area.body_exited.connect(_on_rock_area_body_exited.bind(rock))
 
-
 func _on_rock_area_body_entered(body: Node3D, rock: Node3D) -> void:
 	if body != rover or helicopter_mode or opening_screen.visible:
 		return
@@ -136,7 +136,6 @@ func _on_rock_area_body_entered(body: Node3D, rock: Node3D) -> void:
 
 	current_rock = rock
 	_show_current_rock()
-
 
 func _on_rock_area_body_exited(body: Node3D, rock: Node3D) -> void:
 	if body != rover:
@@ -152,7 +151,6 @@ func _on_rock_area_body_exited(body: Node3D, rock: Node3D) -> void:
 
 	if scanning_rock == null:
 		_update_research_ui()
-
 
 func _update_research_ui() -> void:
 	if current_rock == null:
@@ -280,12 +278,27 @@ func _on_research_cutscene_finished(_animation_name: StringName) -> void:
 	scanning_rock = null
 	exit_research_cutscene()
 	if scanned_rock != null and not scanned_rock.researched:
-		scanned_rock.researched = true
+		scanned_rock.mark_as_researched()
 		tech_point += 5
 		label_tech_point.text = "Tech point: "+str(tech_point)
+		_refresh_research_progress_label()
 		_refresh_rover_visual_upgrade()
 		_show_game_end_popup_once()
 	_update_research_ui()
+
+func _refresh_research_progress_label() -> void:
+	var researched_count: int = 0
+	var total_rock_count: int = rocks.get_child_count()
+
+	for rock in rocks.get_children():
+		var rock_node: Node3D = rock as Node3D
+		if rock_node == null:
+			continue
+		if rock_node.researched == true:
+			researched_count = researched_count + 1
+
+	research_progress_label.text = str(researched_count) + "/" + str(total_rock_count) + " rocks have been researched"
+
 
 func _show_game_end_popup_once() -> void:
 	if game_end_popup_shown or tech_point < GAME_END_TECH_POINT:
@@ -351,6 +364,7 @@ func _ready():
 	research_ui.visible = false
 	research_prompt = label_do.text
 	label_tech_point.text = "Tech point: "+str(tech_point)
+	_refresh_research_progress_label()
 	initial_rover_transform = rover.global_transform
 	introduction_screen.visible = false
 	rover_process_mode_before_opening = rover.process_mode

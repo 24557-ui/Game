@@ -64,7 +64,7 @@ R_rotation = 0.6981317007977318
 pitch_limit = 0.65
 
 [node name="Camera3D_1" type="Camera3D" parent="first_pv_camera" unique_id=363388281]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.31745717, 0.24169114, -1.1279453)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.31745717, 0.24169114, -1.4077625)
 cull_mask = 1048563
 
 [node name="VehicleWheel3D" parent="." unique_id=100070975 instance=ExtResource("5_grv4m")]
@@ -104,11 +104,13 @@ draw_pass_1 = SubResource("QuadMesh_iovaw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1191525092]
 transform = Transform3D(3.5, 0, 0, 0, -2.0400104e-07, 1.167, 0, -4.667, -5.101119e-08, 0, 0.8286774, -0.8402411)
+visible = false
 layers = 4
 mesh = SubResource("PrismMesh_iovaw")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1575920148]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.897301, 0)
+visible = false
 layers = 8
 mesh = SubResource("CylinderMesh_17k7s")
 

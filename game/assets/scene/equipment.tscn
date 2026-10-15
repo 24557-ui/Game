@@ -21,7 +21,7 @@ initial_velocity_max = 1.0
 gravity = Vector3(0, 0, 0)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_equipment_forward"]
-size = Vector3(10, 12, 20)
+size = Vector3(10, 9.844482, 12.432129)
 
 [node name="equipment" unique_id=1803297993 instance=ExtResource("1_52rbk")]
 
@@ -34,7 +34,7 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0
 visible = false
 emitting = false
 amount = 20
-lifetime = 2.5
+lifetime = 5.1
 preprocess = 2.5
 process_material = SubResource("ParticleProcessMaterial_equipment")
 draw_pass_1 = ExtResource("2_1lcyi")
@@ -53,7 +53,7 @@ draw_pass_1 = ExtResource("2_1lcyi")
 [node name="EquipmentDetectionArea" type="Area3D" parent="." index="3" unique_id=1382764491]
 
 [node name="ForwardCollisionShape3D" type="CollisionShape3D" parent="EquipmentDetectionArea" index="0" unique_id=1829759446]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.986667)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.0440674, 7.202731)
 shape = SubResource("BoxShape3D_equipment_forward")
 
 [node name="arm2" parent="." index="4" unique_id=1041404598 instance=ExtResource("3_vid5m")]

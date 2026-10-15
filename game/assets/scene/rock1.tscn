@@ -26,6 +26,7 @@ transform = Transform3D(0.94835377, -0.31721464, 0, 0.31721464, 0.94835377, 0, 0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1369343646]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.001373291, 0.1971283, 0.00024414063)
+visible = false
 layers = 4
 mesh = SubResource("BoxMesh_17k7s")
 
@@ -34,3 +35,10 @@ mesh = SubResource("BoxMesh_17k7s")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="area3d" unique_id=937176983]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19286327, 0, 0)
 shape = SubResource("SphereShape3D_r5eyr")
+
+[node name="ResearchedLabel" type="Label3D" parent="." unique_id=189347201]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+visible = false
+billboard = 1
+modulate = Color(0.45, 1, 0.65, 1)
+text = "researched"
