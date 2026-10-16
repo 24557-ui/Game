@@ -291,7 +291,7 @@ _data = {
 script = ExtResource("1_mqc3k")
 
 [node name="Ingenuity" parent="." unique_id=1090544621 instance=ExtResource("8_2xo41")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7880747, -0.7323906, -2.2650642)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7880747, -1.2369637, -5.5973067)
 
 [node name="mini_camera" type="Camera3D" parent="." unique_id=1344812737]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 357.4591, 0)
@@ -334,7 +334,7 @@ transform = Transform3D(-0.14999999, 0, -2.2649369e-08, 0, 0.14999999, 0, 2.2649
 data_directory = "res://assets/textures"
 material = SubResource("Terrain3DMaterial_4xjp1")
 assets = SubResource("Terrain3DAssets_al7io")
-collision_mode = 2
+collision_mode = 3
 top_level = true
 metadata/_edit_lock_ = true
 
@@ -416,15 +416,18 @@ offset_left = 376.0
 offset_top = 293.0
 offset_right = 457.0
 offset_bottom = 327.0
-text = "Exist"
+text = "Exit
+"
 
 [node name="Label" type="Label" parent="CanvasLayer/research_ui" unique_id=106146676]
 layout_mode = 0
-offset_left = 80.0
-offset_top = 40.0
-offset_right = 479.0
-offset_bottom = 224.0
-text = "Research,blablabla"
+offset_left = 50.0
+offset_top = 25.0
+offset_right = 512.0
+offset_bottom = 278.0
+theme_override_font_sizes/font_size = 14
+text = "Research"
+autowrap_mode = 3
 
 [node name="research_cutscene" type="Control" parent="CanvasLayer" unique_id=1592374412]
 layout_mode = 3
@@ -735,7 +738,8 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "This game is a demo for two mars rover emmisions: The Sojourner and the Peseverance.
 
-The purpose of this game is to "
+In the game you need to search 10 rocks, and gain tehnology points from it.
+After you have 25 or more tech_points, we'll provide you a better rover, and unlock a helicopter. "
 
 [node name="IntroductionBackButton" type="Button" parent="CanvasLayer/IntroductionScreen" unique_id=1687262808]
 layout_mode = 1

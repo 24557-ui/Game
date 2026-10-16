@@ -172,7 +172,9 @@ func _show_current_rock() -> void:
 	research_button_do.disabled = false
 
 	if current_rock.researched:
-		label_do.text = "doing the research, blablabla"
+		label_do.text = "FINDINGS:
+The APXS sensor achieved optimal direct contact with the target's unweathered surface. Spectroscopic data reveals a high silicon (Si) and iron (Fe) content. This chemical signature indicates a fine-grained, volcanic composition. It is highly consistent with terrestrial andesite or transitional basaltic andesite.
+The low sulfur levels confirm minimal dust contamination on the contact patch. This provides a true reading of the primary bedrock geochemistry. Data successfully transmitted to Earth."
 	else:
 		label_do.text = research_prompt
 

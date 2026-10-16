@@ -41,8 +41,7 @@ draw_pass_1 = ExtResource("2_1lcyi")
 
 [node name="GPUParticles3D_Upgraded" type="GPUParticles3D" parent="." index="2" unique_id=769515764]
 process_mode = 3
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 4.5723577, 8.230677)
-visible = false
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 3.8946319, 4.5723577, 5.6767445)
 emitting = false
 amount = 20
 lifetime = 2.5
@@ -53,7 +52,7 @@ draw_pass_1 = ExtResource("2_1lcyi")
 [node name="EquipmentDetectionArea" type="Area3D" parent="." index="3" unique_id=1382764491]
 
 [node name="ForwardCollisionShape3D" type="CollisionShape3D" parent="EquipmentDetectionArea" index="0" unique_id=1829759446]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.0440674, 7.202731)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.0440674, 11.127136)
 shape = SubResource("BoxShape3D_equipment_forward")
 
 [node name="arm2" parent="." index="4" unique_id=1041404598 instance=ExtResource("3_vid5m")]

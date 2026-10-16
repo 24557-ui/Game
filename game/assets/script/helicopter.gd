@@ -1,7 +1,10 @@
-extends Node3D
+extends CharacterBody3D
 
 @export var move_speed := 8.0
 @export var vertical_speed := 5.0
+@export var gravity := 3.72
+@export var max_fall_speed := 15.0
+@export var ground_snap_search := 10.0
 @export var rotor_speed := 18.0
 
 enum CameraMode { THIRD, FIRST }
@@ -11,6 +14,7 @@ enum CameraMode { THIRD, FIRST }
 @onready var rotors: Array[Node3D] = [$Node3D, $Node3D2]
 
 var is_active := false
+var has_been_activated := false
 var camera_mode: CameraMode = CameraMode.THIRD
 
 
@@ -27,6 +31,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if not is_active:
+		velocity = Vector3.ZERO
 		return
 
 	var direction := Vector3.ZERO
@@ -40,13 +45,25 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("d"):
 		direction += global_transform.basis.x
 
-	if direction != Vector3.ZERO:
-		global_position += direction.normalized() * move_speed * delta
+
+	if direction == Vector3.ZERO:
+		velocity.x = 0.0
+		velocity.z = 0.0
+	else:
+		var horizontal_velocity := direction.normalized() * move_speed
+		velocity.x = horizontal_velocity.x
+		velocity.z = horizontal_velocity.z
 
 	if Input.is_physical_key_pressed(KEY_UP):
-		global_position += Vector3.UP * vertical_speed * delta
-	if Input.is_physical_key_pressed(KEY_DOWN):
-		global_position -= Vector3.UP * vertical_speed * delta
+		velocity.y = vertical_speed
+	elif Input.is_physical_key_pressed(KEY_DOWN):
+		velocity.y = -vertical_speed
+	elif is_on_floor():
+		velocity.y = 0.0
+	else:
+		velocity.y = maxf(velocity.y - gravity * delta, -max_fall_speed)
+
+	move_and_slide()
 
 
 func _input(event: InputEvent) -> void:
@@ -68,11 +85,31 @@ func set_helicopter_active(active: bool) -> void:
 	_set_rotors_spinning(active)
 
 	if active:
+		# The scene can be placed a small distance above terrain. Avoid a visible
+		# initial drop by snapping once to the first valid surface below Ingenuity.
+		if not has_been_activated:
+			_snap_to_ground()
+			has_been_activated = true
 		switch_camera_mode(CameraMode.THIRD)
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	else:
 		first_camera.current = false
 		third_camera.current = false
+
+
+func _snap_to_ground() -> void:
+	var from := global_position + Vector3.UP * 2.0
+	var to := global_position - Vector3.UP * ground_snap_search
+	var query := PhysicsRayQueryParameters3D.create(from, to)
+	query.exclude = [get_rid()]
+	query.collision_mask = collision_mask
+
+	var hit := get_world_3d().direct_space_state.intersect_ray(query)
+	if hit.is_empty():
+		return
+
+	global_position = hit.position + Vector3.UP * 0.02
+	velocity.y = 0.0
 
 
 func switch_camera_mode(mode: CameraMode) -> void:

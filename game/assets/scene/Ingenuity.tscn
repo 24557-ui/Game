@@ -7,9 +7,9 @@
 [ext_resource type="Script" uid="uid://b3nl5udtl4r0x" path="res://assets/script/Third_pv.gd" id="5_third"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_17k7s"]
-size = Vector3(1, 0.43951416, 1)
+size = Vector3(1.1, 0.9, 0.65)
 
-[node name="Node3D" type="Node3D" unique_id=1090544621]
+[node name="Node3D" type="CharacterBody3D" unique_id=1090544621]
 script = ExtResource("3_helicopter")
 
 [node name="Ingenuity" parent="." unique_id=291735110 instance=ExtResource("1_dts6k")]
@@ -37,8 +37,6 @@ script = ExtResource("5_third")
 [node name="Camera3D" type="Camera3D" parent="third_pv_camera" unique_id=729455507]
 cull_mask = 1048563
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1990499212]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1300954390]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28024292, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1300954390]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4485, 0)
 shape = SubResource("BoxShape3D_17k7s")
